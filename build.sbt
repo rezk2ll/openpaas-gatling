@@ -8,15 +8,13 @@ lazy val root = (project in file("."))
         scalaVersion := "2.12.8",
 
         libraryDependencies += "io.gatling" % "gatling-test-framework" % gatlingVersion,
-        libraryDependencies += "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion
-  )
-  .dependsOn(jamesGatling % "compile->compile;test->test")
+        libraryDependencies += "io.gatling.highcharts" % "gatling-charts-highcharts" % gatlingVersion,
+        libraryDependencies += "com.github.azakordonets" %% "fabricator" % "2.1.5",
+        libraryDependencies += "com.typesafe.play" %% "play-ahc-ws-standalone" % playWsVersion
 
+  )
+
+val playWsVersion = "2.0.1"
 val gatlingVersion = "3.0.3"
 
 enablePlugins(GatlingPlugin)
-
-resolvers += "lightshed-maven" at "http://dl.bintray.com/content/lightshed/maven"
-resolvers += "Fabricator" at "http://dl.bintray.com/biercoff/Fabricator"
-
-lazy val jamesGatling = ProjectRef(uri("git://github.com/linagora/james-gatling.git"), "root")
